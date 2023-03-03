@@ -30,15 +30,15 @@ const EditForm = React.forwardRef(
       patientNames,
       medicationNames,
       pad,
-      isLoading,
-      isError,
-      fecherror,      
+      // isLoading,
+      //isError,
+      //fecherror,
     },
     formRef
   ) => {
     return (
       <>
-      {isLoading?(console.log("Loading/...");)}
+        {/* {isLoading?(console.log("Loading/..."):} */}
         <Form
           ref={formRef}
           initialValues={{
