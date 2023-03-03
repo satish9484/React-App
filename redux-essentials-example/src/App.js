@@ -1,5 +1,5 @@
 import React from "react";
-import HomePage from "./HomePage";
+// import HomePage from "./HomePage";
 
 // import { Routes, Route } from "react-router-dom";
 
@@ -19,12 +19,12 @@ import HomePage from "./HomePage";
 // import NavBar from "./features/Components/NavBar";
 // <NavBar />;
 
-// import Registration from "./Registration";
+import Registration from "./Registration";
 
 function App() {
   return (
     <React.Fragment>
-      <HomePage />
+      <Registration />
       {/* <Routes>
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterUser />} />

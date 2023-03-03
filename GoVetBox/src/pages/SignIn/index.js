@@ -12,12 +12,13 @@ const SignIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [loadings, setLoadings] = useState([]);
   const [userEP, setUserEP] = useState({
     email: "admin.gvb@yopmail.com",
     password: "123456",
     remember: true,
   });
+
+  const [loadings, setLoadings] = useState([]);
 
   const enterLoading = (index) => {
     setLoadings((prevLoadings) => {
@@ -42,7 +43,7 @@ const SignIn = () => {
   };
 
   const onFinish = (values) => {
-    console.log(userEP, values);
+    //console.log(userEP, values);
     //Axios login
 
     dispatch(loginAction(values))
@@ -57,7 +58,7 @@ const SignIn = () => {
   return (
     <>
       <section className="h-screen gradient-form bg-gray-200">
-        <div className="container h-screen overflow-scroll">
+        <div className="container h-screen">
           <div className="flex justify-center items-center flex-wrap w-screen h-screen g-6 text-gray-800">
             <div
               className="flex items-center shadow-lg rounded-lg"
@@ -157,7 +158,7 @@ const SignIn = () => {
                       <Form.Item>
                         <div className="text-center pt-1 mb-12 pb-1">
                           <Button
-                            className="login-form-button inline-block bg-amber-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-amber-600 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg w-full mb-3 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-150"
+                            className="login-form-button inline-block px-6 py-2.5 bg-amber-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-amber-600 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg w-full mb-3 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-150"
                             type="primary"
                             htmlType="submit"
                             data-mdb-ripple="true"
@@ -170,7 +171,7 @@ const SignIn = () => {
                           <p className="mb-0 mr-2">Don't have an account?</p>
                           <Button
                             type="button"
-                            className="inline-block bg-neutral-400 border-2 text-white font-medium text-xs leading-tight uppercase rounded focus:outline-none focus:ring-0 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300"
+                            className="inline-block px-6 py-2 bg-neutral-400 border-2 text-white font-medium text-xs leading-tight uppercase rounded focus:outline-none focus:ring-0 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300"
                             loading={loadings[0]}
                             onClick={() => enterLoading(0)}
                             data-mdb-ripple="true"

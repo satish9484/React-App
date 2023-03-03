@@ -14,7 +14,18 @@ const initialState = {
 
   // Auth Data
   isLoggedIn: false,
+  token: null,
   userData: {},
+};
+
+const loadFromLocalStorage = (data) => {
+  try {
+    const result = data;
+    return result ? JSON.parse(result) : undefined;
+  } catch (e) {
+    console.error(e);
+    return undefined;
+  }
 };
 
 export const loginAction = (data) => ({
@@ -46,22 +57,25 @@ const loginSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(LOGIN_S, (state, action) => {
-      console.log(action.payload);
-
       // Default header for auth
 
       axios.defaults.headers.common["Authorization"] =
         action.payload.data.accessToken;
 
-      localStorage.setItem(
-        LS_AUTHTOKEN,
-        JSON.stringify(action.payload.data.accessToken)
-      );
+      try {
+        localStorage.setItem(
+          LS_AUTHTOKEN,
+          JSON.stringify(action.payload.data.accessToken)
+        );
 
-      localStorage.setItem(LS_USER, JSON.stringify(action.payload.data));
+        localStorage.setItem(LS_USER, JSON.stringify(action.payload.data));
+      } catch (e) {
+        console.error(e);
+      }
 
       state.userData = action.payload;
       state.isLoggedIn = true;
+      state.token = loadFromLocalStorage(localStorage.getItem(LS_AUTHTOKEN));
     });
     builder.addCase(LOGIN_F, (state, action) => {
       // remove items on logout
